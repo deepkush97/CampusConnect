@@ -2,10 +2,13 @@ package com.afreet.campusconnect.Home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.afreet.campusconnect.Login.LoginActivity;
@@ -15,6 +18,7 @@ import com.afreet.campusconnect.Offer.OfferActivity;
 import com.afreet.campusconnect.Profile.ProfileActivity;
 import com.afreet.campusconnect.R;
 import com.afreet.campusconnect.Share.ShareActivity;
+import com.afreet.campusconnect.Utils.Permissions;
 import com.afreet.campusconnect.Utils.SharedPreferenceConfig;
 import com.afreet.campusconnect.Utils.UniversalImageLoader;
 
@@ -31,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     private SharedPreferenceConfig preferenceConfig;
 
     private static final int ACTIVITY_NUM = 2;
+    private static final int VERIFY_PERMISSIONS_REQUEST = 1;
+
     private TabLayout tabLayout;
     private Context mContext = HomeActivity.this;
 
@@ -49,7 +55,34 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         setupBottomNavigation();
+        if(checkPermissionArray(Permissions.PERMISSIONS)){
+        }else {
+            verifyPermissions(Permissions.PERMISSIONS);
+        }
+
     }
+
+    public void verifyPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(HomeActivity.this,
+                permissions,
+                VERIFY_PERMISSIONS_REQUEST
+        );
+    }
+
+    public boolean checkPermissionArray(String[] permissions){
+        for (String check : permissions) {
+            if (!checkPermissions(check)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkPermissions(String permission){
+        int permissionRequest = ActivityCompat.checkSelfPermission(HomeActivity.this,permission);
+        return permissionRequest == PackageManager.PERMISSION_GRANTED;
+    }
+
 
     private void initImageLoader(){
         UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
