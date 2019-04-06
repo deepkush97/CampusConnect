@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/mc_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainCardLayout">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedTopHeader">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/userProfilePic"
+                    android:src="@drawable/ic_default"
+                    app:civ_border_color="#fefefe"
+                    app:civ_border_width="3dp"
+                    android:elevation="5dp"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentLeft="true" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/userProfilePic"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvUsername"
+                        android:textSize="20dp"
+                        android:text="leftisfame"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryDark"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/noticeTime"
+                        android:textSize="15sp"
+                        android:layout_below="@id/tvUsername"
+                        android:layout_marginStart="5dp"
+                        android:text="15h"
+                        android:textColor="@color/primary"
+                        />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="#EFEFEF"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/mainFeedRel"
+                android:layout_below="@id/feedTopHeader"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:id="@+id/noticeCaption"
+                    android:text="djkncmvlkxcvsdflkn vdhfujsdf hjfnsd sdfjnsdf sfjdn sdfjsfd sjfdn kjsfnd kjsfd kjfsd kjnsfd jndmfs jdsnm sdfjn sfdjkn sdfks df ksdjksfd  jkv xcv jweoiwfe weofndsjv efidsnmsmd sfdjnv,mcn jdfnnm,sdnf,mdsnf d jk ff wefek"
+                    />
+
+                <TextView
+                    android:id="@+id/noticeLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/noticeCaption"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:autoLink="all"
+                    android:linksClickable="true"
+                    android:text="https://www.gstatic.com/webp/gallery/5.jpg"
+                    android:textColor="@color/blue_link"
+                    android:textSize="16sp"
+                    android:textColorLink="@color/blue_link" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </android.support.design.card.MaterialCardView>
+
+</RelativeLayout>

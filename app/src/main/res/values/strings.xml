@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Campus Connect</string>
+
+
+    <string name="user_id">tempacc4897@gmail.com</string>
+    <string name="user_pass">12345678</string>
+    <string name="user_id_placeholder">No User</string>
+
+    <string name="login_preference">com.afreet.campusconnect_login_preference</string>
+    <string name="login_status_preference">com.afreet.campusconnect_login_status_preference</string>
+    <string name="login_userId_preference">com.afreet.campusconnect_login_userId_preference</string>
+
+</resources>
