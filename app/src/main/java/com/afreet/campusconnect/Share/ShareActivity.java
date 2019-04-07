@@ -3,7 +3,9 @@ package com.afreet.campusconnect.Share;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -15,12 +17,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.afreet.campusconnect.Home.HomeActivity;
 import com.afreet.campusconnect.Notice.NoticeActivity;
 import com.afreet.campusconnect.Offer.OfferActivity;
 import com.afreet.campusconnect.Profile.ProfileActivity;
 import com.afreet.campusconnect.R;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,7 @@ import java.util.List;
 public class ShareActivity extends AppCompatActivity {
 
     private static final int ACTIVITY_NUM = 3;
+    private static final int PICK_IMAGE = 2;
     private TabLayout tabLayout;
     private Context mContext = ShareActivity.this;
 
@@ -37,6 +43,10 @@ public class ShareActivity extends AppCompatActivity {
     private ImageView ivSelectedImage;
     private FloatingActionButton fabPublishPost;
 
+    private int imageSelect = 0;
+    private Uri imageUri;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +55,23 @@ public class ShareActivity extends AppCompatActivity {
         spinnerUserCategory = (Spinner) findViewById(R.id.spinner_userCategory);
         inputPostCaption = (EditText) findViewById(R.id.input_postCaption);
         inputPostLink = (EditText) findViewById(R.id.input_postLink);
-        btnSelectImage = (RelativeLayout) findViewById(R.id.rel_selectImage);
+        btnSelectImage = (RelativeLayout) findViewById(R.id.btn_selectImage);
         ivSelectedImage = (ImageView) findViewById(R.id.iv_selectedImage);
         fabPublishPost = (FloatingActionButton) findViewById(R.id.fab_publishPost);
         setupBottomNavigation();
         initWidgets();
+
+        btnSelectImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent gallery = new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(gallery,"Select Image"),PICK_IMAGE);
+            }
+        });
 
         fabPublishPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +80,34 @@ public class ShareActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == PICK_IMAGE && resultCode == RESULT_OK){
+
+            imageUri = data.getData();
+            CropImage.activity(imageUri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .start(this);
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                imageUri = result.getUri();
+                ivSelectedImage.setVisibility(View.VISIBLE);
+                ivSelectedImage.setImageURI(imageUri);
+                imageSelect = 1;
+            } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     private void verifyPost() {
         if(spinnerUserCategory.getSelectedItem().toString().equals("Select")){

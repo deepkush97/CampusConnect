@@ -29,6 +29,9 @@
         <activity android:name=".Offer.OfferActivity" />
         <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".Share.ShareActivity" android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>
