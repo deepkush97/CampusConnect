@@ -213,7 +213,7 @@ public class NoticeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        noticeRecyclerViewAdapter = new NoticeRecyclerViewAdapter(noticeList);
+        noticeRecyclerViewAdapter = new NoticeRecyclerViewAdapter(this, noticeList);
         LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         noticeRecyclerView.setLayoutManager(linearLayoutManager);
         noticeRecyclerView.setAdapter(noticeRecyclerViewAdapter);

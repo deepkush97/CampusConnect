@@ -26,7 +26,9 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_centerHorizontal="true"
                     android:id="@+id/userProfilePic"
                     android:src="@drawable/ic_default"
@@ -48,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvUsername"
-                        android:textSize="20dp"
+                        android:textSize="18sp"
                         android:text="leftisfame"
                         android:textStyle="bold"
                         android:textColor="@color/primaryDark"
@@ -58,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/noticeTime"
-                        android:textSize="15sp"
+                        android:textSize="12sp"
                         android:layout_below="@id/tvUsername"
                         android:layout_marginStart="5dp"
                         android:text="15h"
@@ -80,29 +82,26 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_margin="10dp"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:id="@+id/noticeCaption"
                     android:text="djkncmvlkxcvsdflkn vdhfujsdf hjfnsd sdfjnsdf sfjdn sdfjsfd sjfdn kjsfnd kjsfd kjfsd kjnsfd jndmfs jdsnm sdfjn sfdjkn sdfks df ksdjksfd  jkv xcv jweoiwfe weofndsjv efidsnmsmd sfdjnv,mcn jdfnnm,sdnf,mdsnf d jk ff wefek"
                     />
 
-                <TextView
-                    android:id="@+id/noticeLink"
+                <android.support.v7.widget.AppCompatButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/noticeLink"
+                    android:layout_height="40dp"
+                    android:text=" Download File... "
+                    android:textAllCaps="false"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/primaryDark"
                     android:layout_below="@id/noticeCaption"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:autoLink="all"
-                    android:linksClickable="true"
-                    android:text="https://www.gstatic.com/webp/gallery/5.jpg"
-                    android:textColor="@color/blue_link"
-                    android:textSize="16sp"
-                    android:textColorLink="@color/blue_link" />
-
+                    android:layout_marginBottom="10dp"/>
             </RelativeLayout>
 
         </RelativeLayout>

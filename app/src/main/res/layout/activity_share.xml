@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/white"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,16 +14,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            >
+            android:layout_alignParentTop="true">
             <RelativeLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
-                android:layout_alignParentTop="true"
-                >
-
+                android:layout_alignParentTop="true">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -34,15 +30,11 @@
                     android:textSize="22sp"
                     android:textColor="@color/primaryDark"
                     android:text="Share"/>
-
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/navigationBar"
-                    android:layout_alignParentBottom="true"
-                    />
-
+                    android:layout_alignParentBottom="true" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -51,18 +43,157 @@
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="55dp"
             android:layout_marginTop="50dp"
             android:id="@+id/relLayout2">
-
-
-            <android.support.v4.view.ViewPager
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/viewpager_container">
+                android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    android:padding="8dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/mainCardLayout">
 
-            </android.support.v4.view.ViewPager>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_marginStart="16dp"
+                            android:id="@+id/catRel">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Select a category"
+                                android:textColor="@color/primaryDark"
+                                android:id="@+id/tv_category" />
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/spinner_userCategory"
+                                android:layout_below="@id/tv_category"/>
+                        </RelativeLayout>
 
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/til_postCaption"
+                            android:layout_below="@id/catRel"
+                            app:errorEnabled="true"
+                            app:hintEnabled="true"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="0dp"
+                            app:boxBackgroundMode="outline">
+                            <android.support.design.widget.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:hint="Write your feed here..."
+                                android:layout_margin="8dp"
+                                android:textSize="14sp"
+                                android:inputType="textMultiLine"
+                                android:gravity="top"
+                                android:id="@+id/input_postCaption"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="true"
+                            android:id="@+id/til_postLink"
+                            android:layout_below="@id/til_postCaption"
+                            app:hintEnabled="true"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="0dp"
+                            app:boxBackgroundMode="outline">
+                            <android.support.design.widget.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Link (optional)"
+                                android:layout_margin="8dp"
+                                android:textSize="14sp"
+                                android:inputType="textUri"
+                                android:id="@+id/input_postLink"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+                        <!--<android.support.v7.widget.AppCompatButton-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="40dp"-->
+                            <!--android:layout_marginStart="16dp"-->
+                            <!--android:layout_marginBottom="16dp"-->
+                            <!--android:layout_marginEnd="16dp"-->
+                            <!--android:text="Insert an Image"-->
+                            <!--android:textSize="14sp"-->
+                            <!--android:textStyle="normal"-->
+                            <!--android:layout_below="@id/til_postLink"-->
+                            <!--android:theme="@style/Widget.MaterialComponents.Button.TextButton"-->
+                            <!--android:textColor="@color/primaryDark"-->
+                            <!--android:textAllCaps="false"-->
+                            <!--android:id="@+id/btn_selectImage"/>-->
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_below="@id/til_postLink"
+                            android:id="@+id/rel_selectImage">
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:padding="8dp"
+                                android:id="@+id/btn_selectImage"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:focusable="true">
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/ic_add_photo"
+                                    android:layout_centerVertical="true"
+                                    android:id="@+id/iv_add_photo"/>
+
+                                <TextView
+                                    android:layout_toEndOf="@id/iv_add_photo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Photo (Optional)"
+                                    />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/iv_selectedImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/rel_selectImage"
+                            android:src="@drawable/cc_logo"
+                            android:scaleType="fitCenter"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="16dp"/>
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </ScrollView>
         </RelativeLayout>
 
         <!--Bottom Navigation-->
@@ -75,4 +206,14 @@
 
     </RelativeLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:id="@+id/fab_publishPost"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="71dp"
+        android:src="@drawable/ic_send"
+        android:backgroundTint="@color/buttonColor"
+        />
 </android.support.design.widget.CoordinatorLayout>

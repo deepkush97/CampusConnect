@@ -45,5 +45,8 @@ public class AppUtils {
     public static String facultyImageUrl(){
         return getCollegeHttpsURL()+"staffpics/";
     }
+    public static String noticeFileUrl(){
+        return getCollegeHttpsURL()+"notices/";
+    }
 
 }
