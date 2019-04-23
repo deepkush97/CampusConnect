@@ -4,13 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afreet.campusconnect.Home.HomeActivity;
 import com.afreet.campusconnect.Login.LoginActivity;
@@ -33,7 +40,7 @@ import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final int ACTIVITY_NUM = 4;
     private TabLayout tabLayout;
@@ -41,13 +48,17 @@ public class ProfileActivity extends AppCompatActivity {
 
     private String currentUserId;
     private SharedPreferenceConfig preferenceConfig;
-    private AppCompatButton btnSignOut;
     private TextView tvAboutMe;
     private CircleImageView profilePic;
     private TextView profileName;
     private TextView profileDept;
     private TextView profileErNo;
     private RelativeLayout rlAboutMe;
+    private ImageView btnOptions;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private TextView navProfileName;
+    private CircleImageView navProfilePic;
 
     private CustomProgressDialog progressDialog = CustomProgressDialog.getInstance();
     private RequestQueue mQueue;
@@ -59,27 +70,59 @@ public class ProfileActivity extends AppCompatActivity {
 
         preferenceConfig = new SharedPreferenceConfig(getApplicationContext());
         currentUserId = preferenceConfig.readLoginUserId();
+        if(!preferenceConfig.readLoginStatus()){
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            finish();
+            startActivity(intent);
+        }
         tvAboutMe = (TextView) findViewById(R.id.aboutMe);
         profilePic = (CircleImageView) findViewById(R.id.profilePic);
         profileName = (TextView) findViewById(R.id.profileName);
         profileDept = (TextView) findViewById(R.id.profileDept);
         profileErNo = (TextView) findViewById(R.id.profileErNo);
         rlAboutMe = (RelativeLayout) findViewById(R.id.rl_aboutMe);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         rlAboutMe.setVisibility(View.GONE);
-        btnSignOut = (AppCompatButton) findViewById(R.id.btn_signOut);
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
+        btnOptions = (ImageView) findViewById(R.id.btn_options);
+        btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signOut();
+                openDrawer();
             }
         });
+        View headerView = navigationView.getHeaderView(0);
+        navProfileName = (TextView) headerView.findViewById(R.id.nav_username);
+        navProfilePic = (CircleImageView) headerView.findViewById(R.id.nav_profilePic);
+        navProfilePic.setImageDrawable(getDrawable(R.drawable.ic_profile));
+        navProfileName.setText("dfhsdkfj");
 
         mQueue = Volley.newRequestQueue(this);
         setupBottomNavigation();
-
+        navigationView.setNavigationItemSelectedListener(this);
         getUser();
     }
 
+    private void openDrawer() {
+        //  Snackbar.make(getCurrentFocus(), "awesome",Snackbar.LENGTH_LONG).show();
+        if(drawer.isDrawerOpen(GravityCompat.END)) {
+            drawer.closeDrawer(GravityCompat.END);
+        }else
+            drawer.openDrawer(GravityCompat.END);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     private void getUser() {
 
@@ -106,8 +149,10 @@ public class ProfileActivity extends AppCompatActivity {
 //                                String dob = message.getString("dob").trim();
 
                                 UniversalImageLoader.setImage(img, profilePic, null, "");
+                                UniversalImageLoader.setImage(img, navProfilePic, null, "");
 //                                String sumUp = semester +"\n"+emailid +"\n" +mobileno +"\n" +dob;
                                 profileName.setText(name);
+                                navProfileName.setText(name);
                                 profileDept.setText(AppUtils.deptConversion(dept));
                                 profileErNo.setText(enroll);
 //                                tvAboutMe.setText(sumUp);
@@ -130,11 +175,54 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void signOut() {
 
-        preferenceConfig.writeLoginStatus(false, getResources().getString(R.string.user_id_placeholder));
-        startActivity(new Intent(this, LoginActivity.class));
-        finish();
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        Log.d("Hero", "onNavigationItemSelected: "+item.toString());
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        Intent optionIntent = new Intent(getApplicationContext(), OptionsActivity.class);
+        switch (id){
+            case R.id.nav_account_management:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_account_management));
+                break;
+            case R.id.nav_edit_category:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_edit_categories));
+                break;
+            case R.id.nav_signout:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_sign_out));
+                break;
+            case R.id.nav_feedback:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_feedback));
+                break;
+            case R.id.nav_tutorials:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_how_to_use));
+                break;
+            case R.id.nav_terms_conditions:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_terms_and_condition));
+                break;
+            case R.id.nav_about:
+                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_about));
+                break;
+                default:
+                    optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_about));
+        }
+
+
+        startActivity(optionIntent);
+//        if(item.hasSubMenu()){
+//            for(int i =0;i<item.getSubMenu().size();i++){
+//                item.getSubMenu().getItem(i).setChecked(false);
+//            }
+//        }
+//        else {
+//            item.setChecked(false);
+//        }
+        drawer.closeDrawer(GravityCompat.END);
+        return true;
     }
 
     //Function for the making the bottom navigation Bar in each main Activities.

@@ -48,53 +48,9 @@ public class ShareActivity extends AppCompatActivity {
     private String mCM;
     private ValueCallback<Uri> mUM;
     private ValueCallback<Uri[]> mUMA;
+
     //select whether you want to upload multiple files (set 'true' for yes)
     private boolean multiple_files = false;
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
-        super.onActivityResult(requestCode, resultCode, intent);
-        if(Build.VERSION.SDK_INT >= 21){
-            Uri[] results = null;
-            //checking if response is positive
-            if(resultCode== Activity.RESULT_OK){
-                if(requestCode == FCR){
-                    if(null == mUMA){
-                        return;
-                    }
-                    if(intent == null || intent.getData() == null){
-                        if(mCM != null){
-                            results = new Uri[]{Uri.parse(mCM)};
-                        }
-                    }else{
-                        String dataString = intent.getDataString();
-                        if(dataString != null){
-                            results = new Uri[]{Uri.parse(dataString)};
-                        } else {
-                            if(multiple_files) {
-                                if (intent.getClipData() != null) {
-                                    final int numSelectedFiles = intent.getClipData().getItemCount();
-                                    results = new Uri[numSelectedFiles];
-                                    for (int i = 0; i < numSelectedFiles; i++) {
-                                        results[i] = intent.getClipData().getItemAt(i).getUri();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            mUMA.onReceiveValue(results);
-            mUMA = null;
-        }else{
-            if(requestCode == FCR){
-                if(null == mUM) return;
-                Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
-                mUM.onReceiveValue(result);
-                mUM = null;
-            }
-        }
-    }
 
     @SuppressLint({"SetJavaScriptEnabled", "WrongViewCast"})
     @SuppressWarnings({"findViewById", "RedundantCast"})
@@ -203,6 +159,52 @@ public class ShareActivity extends AppCompatActivity {
         setupBottomNavigation();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(Build.VERSION.SDK_INT >= 21){
+            Uri[] results = null;
+            //checking if response is positive
+            if(resultCode== Activity.RESULT_OK){
+                if(requestCode == FCR){
+                    if(null == mUMA){
+                        return;
+                    }
+                    if(intent == null || intent.getData() == null){
+                        if(mCM != null){
+                            results = new Uri[]{Uri.parse(mCM)};
+                        }
+                    }else{
+                        String dataString = intent.getDataString();
+                        if(dataString != null){
+                            results = new Uri[]{Uri.parse(dataString)};
+                        } else {
+                            if(multiple_files) {
+                                if (intent.getClipData() != null) {
+                                    final int numSelectedFiles = intent.getClipData().getItemCount();
+                                    results = new Uri[numSelectedFiles];
+                                    for (int i = 0; i < numSelectedFiles; i++) {
+                                        results[i] = intent.getClipData().getItemAt(i).getUri();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            mUMA.onReceiveValue(results);
+            mUMA = null;
+        }else{
+            if(requestCode == FCR){
+                if(null == mUM) return;
+                Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+                mUM.onReceiveValue(result);
+                mUM = null;
+            }
+        }
+    }
+
+
     //callback reporting if error occurs
     public class Callback extends WebViewClient{
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl){
@@ -248,8 +250,6 @@ public class ShareActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
     }
-
-
 
     //Function for the making the bottom navigation Bar in each main Activities.
     private void setupBottomNavigation() {

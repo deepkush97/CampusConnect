@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/masterRel"
+    android:visibility="visible"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/mc_signOut"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="5dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <android.support.design.card.MaterialCardView
+                android:layout_width="100dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/exclamation"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="10dp"
+                >
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50sp"
+                        android:textStyle="bold"
+                        android:layout_centerInParent="true"
+                        android:text="!"/>
+                </RelativeLayout>
+
+            </android.support.design.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exclamation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/primaryDark"
+                android:textSize="16sp"
+                android:text="Are you really want to Signout?"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/exclamation"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="100dp"
+                    android:id="@+id/cancelBtn"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:text="Cancel"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textAllCaps="false"
+                    android:layout_alignParentStart="true"
+                    />
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="100dp"
+                    android:id="@+id/confirmBtn"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:text="Confirm"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textAllCaps="false"
+                    android:layout_alignParentEnd="true"
+                    />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+
+    </android.support.design.card.MaterialCardView>
+
+</RelativeLayout>

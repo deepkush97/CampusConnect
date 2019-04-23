@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_account_management"
+            android:title="@string/fragment_account_management" />
+        <item
+            android:id="@+id/nav_edit_category"
+            android:title="@string/fragment_edit_categories" />
+        <item
+            android:id="@+id/nav_signout"
+            android:title="@string/fragment_sign_out" />
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_feedback"
+                android:title="@string/fragment_feedback"/>
+            <item
+                android:id="@+id/nav_tutorials"
+                android:title="@string/fragment_how_to_use"/>
+            <item
+                android:id="@+id/nav_terms_conditions"
+                android:title="@string/fragment_terms_and_condition" />
+            <item
+                android:id="@+id/nav_about"
+                android:title="@string/fragment_about" />
+        </menu>
+    </item>
+
+</menu>
