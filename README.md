@@ -1,4 +1,4 @@
-# CampusConnect3
+# CampusConnect3 - The student application
 
 A android application that is a college application for getting notices, information sharing and creating new post in the system.
 
