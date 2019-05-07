@@ -31,6 +31,16 @@ public class OptionsActivity extends AppCompatActivity {
 
             }else if(fragment_name.equals(getString(R.string.fragment_about))){
 
+            } else if (fragment_name.equals(getString(R.string.fragment_terms_and_condition))) {
+                Bundle bundle = new Bundle();
+                bundle.putString("from", "OA");
+                TermsConditionFragment termsConditionFragment = new TermsConditionFragment();
+                termsConditionFragment.setArguments(bundle);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, termsConditionFragment);
+                transaction.addToBackStack(fragment_name);
+                transaction.commit();
+
             }
 
 

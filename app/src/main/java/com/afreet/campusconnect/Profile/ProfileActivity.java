@@ -23,6 +23,7 @@ import com.afreet.campusconnect.Home.HomeActivity;
 import com.afreet.campusconnect.Login.LoginActivity;
 import com.afreet.campusconnect.Notice.NoticeActivity;
 import com.afreet.campusconnect.Offer.OfferActivity;
+import com.afreet.campusconnect.Onboard.OnboardActivity;
 import com.afreet.campusconnect.R;
 import com.afreet.campusconnect.Share.ShareActivity;
 import com.afreet.campusconnect.Utils.AppUtils;
@@ -77,17 +78,17 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
             finish();
             startActivity(intent);
         }
-        tvAboutMe = (TextView) findViewById(R.id.aboutMe);
-        profilePic = (CircleImageView) findViewById(R.id.profilePic);
-        profileName = (TextView) findViewById(R.id.profileName);
-        profileDept = (TextView) findViewById(R.id.profileDept);
-        profileErNo = (TextView) findViewById(R.id.profileErNo);
-        rlAboutMe = (RelativeLayout) findViewById(R.id.rl_aboutMe);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        tvAboutMe = findViewById(R.id.aboutMe);
+        profilePic = findViewById(R.id.profilePic);
+        profileName = findViewById(R.id.profileName);
+        profileDept = findViewById(R.id.profileDept);
+        profileErNo = findViewById(R.id.profileErNo);
+        rlAboutMe = findViewById(R.id.rl_aboutMe);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
         rlAboutMe.setVisibility(View.GONE);
-        btnOptions = (ImageView) findViewById(R.id.btn_options);
+        btnOptions = findViewById(R.id.btn_options);
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,8 +96,8 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
             }
         });
         View headerView = navigationView.getHeaderView(0);
-        navProfileName = (TextView) headerView.findViewById(R.id.nav_username);
-        navProfilePic = (CircleImageView) headerView.findViewById(R.id.nav_profilePic);
+        navProfileName = headerView.findViewById(R.id.nav_username);
+        navProfilePic = headerView.findViewById(R.id.nav_profilePic);
         navProfilePic.setImageDrawable(getDrawable(R.drawable.ic_profile));
         navProfileName.setText("dfhsdkfj");
 
@@ -116,7 +117,7 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -181,38 +182,51 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
     public boolean onNavigationItemSelected(MenuItem item) {
 
         Log.d("Hero", "onNavigationItemSelected: "+item.toString());
-
+        Intent intent;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Intent optionIntent = new Intent(getApplicationContext(), OptionsActivity.class);
         switch (id){
             case R.id.nav_account_management:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_account_management));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_account_management));
+                startActivity(intent);
                 break;
             case R.id.nav_edit_category:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_edit_categories));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_edit_categories));
+                startActivity(intent);
                 break;
             case R.id.nav_signout:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_sign_out));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_sign_out));
+                startActivity(intent);
                 break;
             case R.id.nav_feedback:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_feedback));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_feedback));
+                startActivity(intent);
                 break;
             case R.id.nav_tutorials:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_how_to_use));
+                intent = new Intent(getApplicationContext(), OnboardActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_terms_conditions:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_terms_and_condition));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_terms_and_condition));
+                startActivity(intent);
                 break;
             case R.id.nav_about:
-                optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_about));
+                intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_about));
+                startActivity(intent);
                 break;
                 default:
-                    optionIntent.putExtra(getString(R.string.fragment_name),getString(R.string.fragment_about));
+                    intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                    intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_about));
+                    startActivity(intent);
+
         }
 
-
-        startActivity(optionIntent);
 //        if(item.hasSubMenu()){
 //            for(int i =0;i<item.getSubMenu().size();i++){
 //                item.getSubMenu().getItem(i).setChecked(false);
@@ -227,7 +241,7 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
 
     //Function for the making the bottom navigation Bar in each main Activities.
     private void setupBottomNavigation() {
-        tabLayout = (TabLayout) findViewById(R.id.bottom_navigation_bar);
+        tabLayout = findViewById(R.id.bottom_navigation_bar);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_notices),0);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_offers),1);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_feeds),2);

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relLayoutParent">
+        <!--Top ToolBar-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true">
+
+            <RelativeLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="@color/primaryDark"
+                    android:text="Offers" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/navigationBar"
+                    android:layout_alignParentBottom="true" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--Middle Section-->
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/relLayout2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="Read the Terms and Conditions carefully"
+                android:textColor="@color/primary"
+                android:id="@+id/tvRead"
+                android:layout_height="wrap_content" />
+
+            <ScrollView
+                android:layout_below="@id/tvRead"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:text="YOU DO NOT AGREE WITH ALL OF THESE TERMS and CONDITIONS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE App AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+PROHIBITED ACTIVITIES\n\n1.	Systematically retrieve data or other content from the App to create or compile, directly or indirectly, a collection, compilation, database,
+	or directory without written permission from us.\n\n
+2.	Make any unauthorized use of the App, including collecting usernames and/or email addresses of users by electronic or other means for
+	the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses.\n\n
+3.	Use the App to advertise or offer to sell goods and services.\n\n
+4.	Circumvent, disable, or otherwise interfere with security-related features of the App, including features that prevent or restrict
+	the use or copying of any Content or enforce limitations on the use of the App and/or the Content contained therein.\n\n
+5.	Engage in unauthorized framing of or linking to the App.\n\n
+6.	Make improper use of our support services or submit false reports of abuse or misconduct.\n\n
+7.	Attempt to impersonate another user or person or use the username of another user.\n\n
+8.	Attempt to bypass any measures of the App designed to prevent or restrict access to the App, or any portion of the App.\n\n
+9.	Use the App in a manner inconsistent with any applicable laws or regulations.\n\n
+
+USER GENERATED CONTRIBUTIONS\n\n1.	The creation, distribution, transmission, public display, or performance, and the accessing, downloading, or copying of your Contributions do not and
+	will not infringe the proprietary rights, including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third party.\n\n
+2.	Your Contributions do not violate any applicable law, regulation, or rule.\n\n
+3.	Your Contributions do not violate the privacy or publicity rights of any third party.\n\n
+4.	Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, or physical handicap.\n\n
+\n\n
+ADVERTISERS\n\nWe allow advertisers to display their advertisements and other information in certain areas of the App, banner advertisements.
+If you are an advertiser, you shall take full responsibility for any advertisements you place on the App and any services provided on the App or products sold through those advertisements.
+Further, as an advertiser, you warrant and represent that you possess all rights and authority to place advertisements on the App, including, but not limited to, intellectual property rights,
+publicity rights, and contractual rights. [As an advertiser, you agree that such advertisements are subject to our Digital Millennium Copyright Act (“DMCA”) Notice and Policy provisions as described below,
+and you understand and agree there will be no refund or other compensation for DMCA takedown-related issues.]  We simply provide the space to place such advertisements, and we have no other relationship with advertisers.
+\n\n
+PRIVACY POLICY\n\nWe care about data privacy and security.\n\nBy using the App, you agree to be bound by our Privacy Policy, which is incorporated into these Terms of Use.  Please be advised the App is hosted in the india.
+If you access the App from the European Union, Asia, or any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the india,
+then through your continued use of the App or Services, you are transferring your data to the india, and you expressly consent to have your data transferred to and processed in the India.
+\n\nAny use of the App in violation of the foregoing violates these Terms of Use and may result in, among other things, termination or suspension of your rights to use the App.
+" />
+            </ScrollView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/relLayoutBottom"
+            android:layout_marginTop="-60dp"
+            android:layout_below="@id/relLayout2">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I Agree"
+                android:layout_centerVertical="true"
+                android:id="@+id/checkbox_agree"
+                android:layout_marginBottom="40dp"
+                android:layout_marginStart="20dp" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textColor="@color/primaryDark"
+                android:textAllCaps="false"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:theme="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/btn_done"
+                android:layout_marginEnd="20dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
