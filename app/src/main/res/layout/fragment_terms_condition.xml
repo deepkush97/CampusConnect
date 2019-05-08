@@ -31,7 +31,7 @@
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:textColor="@color/primaryDark"
-                    android:text="Offers" />
+                    android:text="Terms and Conditions" />
 
 
                 <View

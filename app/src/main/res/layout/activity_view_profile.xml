@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <!--Top ToolBar-->
+    <RelativeLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/btn_back"
+            android:src="@drawable/ic_prev"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/primaryDark"
+            android:text=" View Profile" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/navigationBar"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+    <!--Middle Section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:id="@+id/relLayoutMiddle">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+
+            app:cardCornerRadius="5dp"
+            app:cardElevation="16dp">
+
+            <RelativeLayout
+                android:background="@drawable/nav_bg"
+                android:id="@+id/profileInfo"
+                android:layout_below="@+id/profilePic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="10dp"
+                    android:layout_marginTop="60dp"
+                    android:scaleType="centerCrop"
+                    app:civ_border_overlay="false"
+                    android:src="@drawable/ic_default"
+                    app:civ_border_color="#fefefe"
+                    app:civ_border_width="5dp"
+                    android:layout_centerHorizontal="true" />
+
+
+                <TextView
+                    android:layout_below="@id/profilePic"
+                    android:id="@+id/firstTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Deepanshu Kushwaha"
+                    android:gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/firstSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/firstTitle"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Computer Department"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/secondSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/firstSubTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="8th Semester"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

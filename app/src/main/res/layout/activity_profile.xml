@@ -59,7 +59,7 @@
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="?attr/actionBarSize"
             android:layout_marginTop="50dp"
             android:id="@+id/relLayout2">
 
@@ -71,7 +71,9 @@
                     <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardElevation="4dp"
+                        app:cardElevation="3dp"
+                        android:layout_margin="4dp"
+                        app:cardCornerRadius="5dp"
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -83,8 +85,7 @@
                                 android:layout_width="80dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_height="80dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
                                 android:elevation="10dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/ic_default"
@@ -95,9 +96,9 @@
                                 android:id="@+id/profileInfo"
                                 android:layout_below="@+id/profilePic"
                                 android:layout_width="match_parent"
-                                android:layout_height="80dp"
+                                android:layout_height="100dp"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="10dp"
                                 >
 
                                 <TextView
@@ -105,6 +106,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
+                                    android:layout_margin="10dp"
                                     android:text="Username"
                                     android:textColor="@color/primaryDark"
                                     android:textSize="16sp"
@@ -115,7 +117,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/profileName"
-                                    android:layout_marginTop="2dp"
                                     android:layout_centerHorizontal="true"
                                     android:text="Department"
                                     android:textColor="@color/primary"
@@ -133,46 +134,11 @@
                                     android:textSize="15sp" />
 
                             </RelativeLayout>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/rl_aboutMe"
-                                android:layout_below="@id/profileInfo">
-                                <RelativeLayout
-                                    android:layout_marginTop="5dp"
-                                    android:layout_margin="10dp"
-                                    android:id="@+id/seperator"
-                                    android:layout_marginBottom="5dp"
-                                    android:background="@color/navigationBar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/seperator"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/black"
-                                    android:text="About Me"
-                                    android:id="@+id/tv_aboutMe"
-                                    android:layout_centerHorizontal="true"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/tv_aboutMe"
-                                    android:textSize="16sp"
-                                    android:textAlignment="center"
-                                    android:id="@+id/aboutMe"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginStart="20dp"
-                                    android:text="and im dancing alone on your heartbeat"
-                                    />
-                            </RelativeLayout>
 
 
                             <RelativeLayout
                                 android:layout_marginTop="5dp"
-                                android:layout_below="@id/rl_aboutMe"
+                                android:layout_below="@id/profileInfo"
                                 android:layout_margin="10dp"
                                 android:id="@+id/seperator2"
                                 android:layout_marginBottom="5dp"
@@ -180,7 +146,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"/>
 
-                            <!--Chip Container for printing the chips of the category-->
+                            <!--Chip Container for printing the chips of the categoryId-->
                             <RelativeLayout
                                 android:id="@+id/rl_cat"
                                 android:layout_below="@id/seperator2"
@@ -203,7 +169,7 @@
                                     android:layout_marginTop="5dp"
                                     android:layout_below="@id/tv_category"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="80dp"
                                     android:orientation="horizontal"/>
 
                             </RelativeLayout>
@@ -213,6 +179,18 @@
 
                 </RelativeLayout>
 
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/mainRel"
+                android:id="@+id/btnViewPost"
+                android:text="View your posts"
+                android:textSize="16sp"
+                android:elevation="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryDark"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:gravity="center" />
 
         </RelativeLayout>
 

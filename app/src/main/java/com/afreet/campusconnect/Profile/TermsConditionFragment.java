@@ -62,7 +62,6 @@ public class TermsConditionFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 

@@ -11,13 +11,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afreet.campusconnect.Home.HomeActivity;
 import com.afreet.campusconnect.Login.LoginActivity;
@@ -27,9 +29,11 @@ import com.afreet.campusconnect.Onboard.OnboardActivity;
 import com.afreet.campusconnect.R;
 import com.afreet.campusconnect.Share.ShareActivity;
 import com.afreet.campusconnect.Utils.AppUtils;
+import com.afreet.campusconnect.Utils.CategoryRecyclerViewAdapter;
 import com.afreet.campusconnect.Utils.CustomProgressDialog;
 import com.afreet.campusconnect.Utils.SharedPreferenceConfig;
 import com.afreet.campusconnect.Utils.UniversalImageLoader;
+import com.afreet.campusconnect.Utils.ViewProfileActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,6 +42,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,20 +55,22 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
 
     private String currentUserId;
     private SharedPreferenceConfig preferenceConfig;
-    private TextView tvAboutMe;
     private CircleImageView profilePic;
     private TextView profileName;
     private TextView profileDept;
     private TextView profileErNo;
-    private RelativeLayout rlAboutMe;
     private ImageView btnOptions;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private TextView navProfileName;
     private CircleImageView navProfilePic;
+    private RecyclerView catRecyclerView;
+    private AppCompatButton btnViewPost;
 
     private CustomProgressDialog progressDialog = CustomProgressDialog.getInstance();
     private RequestQueue mQueue;
+
+    ArrayList<String> catList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +86,28 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
             finish();
             startActivity(intent);
         }
-        tvAboutMe = findViewById(R.id.aboutMe);
         profilePic = findViewById(R.id.profilePic);
         profileName = findViewById(R.id.profileName);
         profileDept = findViewById(R.id.profileDept);
         profileErNo = findViewById(R.id.profileErNo);
-        rlAboutMe = findViewById(R.id.rl_aboutMe);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        btnViewPost = findViewById(R.id.btnViewPost);
 
-        rlAboutMe.setVisibility(View.GONE);
+        btnViewPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(getCurrentFocus(), "View Your Post Clicked...", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppUtils.callViewProfileActivity(getApplicationContext(), currentUserId, getString(R.string.studentUserType));
+            }
+        });
+
         btnOptions = findViewById(R.id.btn_options);
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,12 +119,44 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
         navProfileName = headerView.findViewById(R.id.nav_username);
         navProfilePic = headerView.findViewById(R.id.nav_profilePic);
         navProfilePic.setImageDrawable(getDrawable(R.drawable.ic_profile));
-        navProfileName.setText("dfhsdkfj");
 
         mQueue = Volley.newRequestQueue(this);
         setupBottomNavigation();
         navigationView.setNavigationItemSelectedListener(this);
         getUser();
+        setupCategories();
+    }
+
+    private void setupCategories() {
+        catList.add("HTML/CSS");
+        catList.add("C++");
+        catList.add("Android Development");
+        catList.add("Java");
+        catList.add("Python");
+        catList.add("HTML/CSS");
+        catList.add("C++");
+        catList.add("Android Development");
+        catList.add("Java");
+        catList.add("Python");
+        catList.add("HTML/CSS");
+        catList.add("C++");
+        catList.add("Android Development");
+        catList.add("Java");
+        catList.add("Python");
+        catList.add("HTML/CSS");
+        catList.add("C++");
+        catList.add("Android Development");
+        catList.add("Java");
+        catList.add("Python");
+
+
+        catRecyclerView = findViewById(R.id.catRecyclerView);
+        CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(this, catList);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.HORIZONTAL);
+        catRecyclerView.setLayoutManager(layoutManager);
+        catRecyclerView.setAdapter(adapter);
+
+
     }
 
     private void openDrawer() {

@@ -18,11 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Onboard.OnboardActivity"></activity>
+        <activity android:name=".Utils.ViewProfileActivity"></activity>
+        <activity android:name=".Onboard.OnboardActivity" />
         <activity android:name=".Profile.OptionsActivity" />
-        <activity
-            android:name=".Profile.ProfActivity"
-            android:label="@string/title_activity_prof" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Home.HomeActivity">
             <intent-filter>
