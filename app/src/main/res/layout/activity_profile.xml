@@ -189,7 +189,7 @@
                 android:elevation="3dp"
                 android:textStyle="bold"
                 android:textColor="@color/primaryDark"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:theme="@style/Widget.MaterialComponents.Button.TextButton"
                 android:gravity="center" />
 
         </RelativeLayout>

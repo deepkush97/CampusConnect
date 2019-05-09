@@ -69,6 +69,14 @@ public class AppUtils {
         return "http://gecdahod.ac.in/";
     }
 
+    public static String getCollegeBigLogo() {
+        return "http://gecdahod.ac.in/imgs/logo_big.png";
+    }
+
+    public static String getCollegeLogo() {
+        return "http://gecdahod.ac.in/imgs/main-logo2.png";
+    }
+
     public static String facultyImageUrl(){
         return getCollegeHttpsURL()+"staffpics/";
     }
@@ -76,6 +84,7 @@ public class AppUtils {
     public static String studentImageUrl() {
         return getCollegeHttpsURL() + "studentpics/";
     }
+
 
     public static String noticeFileUrl(){
         return getCollegeHttpsURL()+"notices/";

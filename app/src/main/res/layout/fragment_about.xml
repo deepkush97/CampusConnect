@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="true"
+        android:id="@+id/relLayoutParent">
+        <!--Top ToolBar-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true">
+
+            <RelativeLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/btn_back"
+                    android:src="@drawable/ic_prev"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="@color/primaryDark"
+                    android:text="About" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/navigationBar"
+                    android:layout_alignParentBottom="true" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--Middle Section-->
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/relLayout2">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardElevation="4dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rlContent">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:id="@+id/scrollView"
+                        android:layout_marginBottom="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_height="120dp"
+                                android:layout_margin="20dp"
+                                android:src="@drawable/ic_default"
+                                android:id="@+id/iv_collegeLogo" />
+
+                            <TextView
+                                android:layout_below="@id/iv_collegeLogo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvCollegeName"
+                                android:textStyle="bold"
+                                android:layout_marginTop="15dp"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textSize="20sp"
+                                android:text="Govenment Engineeing\nCollege, Dahod"
+                                android:textColor="@color/primaryDark"
+
+                                />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvMainContent"
+                                android:layout_below="@id/tvCollegeName"
+                                android:textAlignment="center"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/primaryDark"
+                                android:textSize="18sp"
+                                android:text="This app is created and maintained by the computer department of\nGovernment Engineering College, Dahod" />
+
+                            <TextView
+                                android:layout_marginTop="40dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tvMainContent"
+                                android:id="@+id/tvDeveloperList"
+                                android:textColor="@color/primary"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                android:text="This app development would not be possible without the permissions and guidance of\nProf. Viren J. Patel\nH. O. D. of Computer Department,\nSincere gratitude to Sir.\n\nAlso, gratitude to all my friends and group members, Mihir Patel, Rishi Thakkar, Alefiya Pithapurwala, to helping in the idea and in supporting me.\n\nI hope, this system would be further developed by the students of our department." />
+
+                        </RelativeLayout>
+                    </ScrollView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/navigationBar"
+                        android:layout_alignParentBottom="true">
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/primaryDark"
+                            android:text="Developed by Deepanshu Kushwaha"
+                            android:textAlignment="center" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_openSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:theme="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_centerInParent="true"
+                android:text="Open Source Libraries"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryDark" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

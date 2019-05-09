@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Open Source Libraries"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDark"
+                android:textSize="18sp"
+                android:padding="4dp"
+                android:background="#EEEEEE" />
+
+            <ListView
+                android:layout_below="@id/tv_title"
+                android:id="@+id/listview_libraries"
+                android:divider="@color/navigationBar"
+                android:footerDividersEnabled="true"
+                android:dividerHeight="1dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
