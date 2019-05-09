@@ -2,21 +2,65 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/masterRel"
-    android:visibility="visible"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
+    <!--Top ToolBar-->
+    <RelativeLayout
+        android:id="@+id/top_rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/btn_back"
+                android:src="@drawable/ic_prev"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/primaryDark"
+                android:text="Sign Out" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/navigationBar"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 
 
     <android.support.design.card.MaterialCardView
         android:id="@+id/mc_signOut"
+        android:layout_below="@id/top_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_margin="10dp"
         android:padding="10dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4dp"
         >
 
         <RelativeLayout

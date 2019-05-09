@@ -29,6 +29,20 @@ public class OptionsActivity extends AppCompatActivity {
                 transaction.addToBackStack(fragment_name);
                 transaction.commit();
 
+            } else if (fragment_name.equals(getString(R.string.fragment_user_post))) {
+                UserPostFragment userPostFragment = new UserPostFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, userPostFragment);
+                transaction.addToBackStack(fragment_name);
+                transaction.commit();
+
+            } else if (fragment_name.equals(getString(R.string.fragment_edit_categories))) {
+                EditCategoriesFragment editCategoriesFragment = new EditCategoriesFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, editCategoriesFragment);
+                transaction.addToBackStack(fragment_name);
+                transaction.commit();
+
             }else if(fragment_name.equals(getString(R.string.fragment_about))){
                 AboutFragment aboutFragment = new AboutFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

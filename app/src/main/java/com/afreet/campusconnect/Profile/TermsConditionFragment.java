@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class TermsConditionFragment extends Fragment {
 
 
     private AppCompatButton btnDone;
+    private ImageView btnBack;
     private CheckBox checkBoxAgree;
     private RelativeLayout relativeLayoutBottom;
     private String from;
@@ -39,7 +41,13 @@ public class TermsConditionFragment extends Fragment {
         btnDone = view.findViewById(R.id.btn_done);
         checkBoxAgree = view.findViewById(R.id.checkbox_agree);
         relativeLayoutBottom = view.findViewById(R.id.relLayoutBottom);
-
+        btnBack = view.findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
 //        if (from.equals("OA")){
 //            relativeLayoutBottom.setVisibility(View.INVISIBLE);
 //        }

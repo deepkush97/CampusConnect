@@ -97,7 +97,9 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
         btnViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(getCurrentFocus(), "View Your Post Clicked...", Snackbar.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
+                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_user_post));
+                startActivity(intent);
             }
         });
 
@@ -238,11 +240,6 @@ public class ProfileActivity extends AppCompatActivity  implements NavigationVie
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id){
-            case R.id.nav_account_management:
-                intent = new Intent(getApplicationContext(), OptionsActivity.class);
-                intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_account_management));
-                startActivity(intent);
-                break;
             case R.id.nav_edit_category:
                 intent = new Intent(getApplicationContext(), OptionsActivity.class);
                 intent.putExtra(getString(R.string.fragment_name), getString(R.string.fragment_edit_categories));

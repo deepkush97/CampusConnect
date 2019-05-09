@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.afreet.campusconnect.Login.LoginActivity;
@@ -22,6 +23,7 @@ public class SignOutFragment extends Fragment {
 
     private SharedPreferenceConfig preferenceConfig;
     private AppCompatButton btnConfirm, btnCancel;
+    private ImageView btnBack;
 
 
     public SignOutFragment() {
@@ -37,8 +39,16 @@ public class SignOutFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sign_out, container, false);
 
-        btnCancel = (AppCompatButton) view.findViewById(R.id.cancelBtn);
-        btnConfirm = (AppCompatButton) view.findViewById(R.id.confirmBtn);
+        btnCancel = view.findViewById(R.id.cancelBtn);
+        btnConfirm = view.findViewById(R.id.confirmBtn);
+        btnBack = view.findViewById(R.id.btn_back);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
